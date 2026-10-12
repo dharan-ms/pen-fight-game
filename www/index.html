@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#008751" />
+  <meta name="description" content="Play classic biro game with friends" />
+  <meta name="application-name" content="ben fight" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="ben fight" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>ben fight</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <div class="paper" id="app">
+    <section class="screen home" id="screen-home">
+      <canvas class="home-desk" id="home-desk" width="1724" height="784" aria-hidden="true"></canvas>
+      <div class="corner corner-right">
+        <button class="btn btn-gold" id="open-board" type="button">🏆 Leaderboard</button>
+      </div>
+      <svg class="deco-pen deco-left" viewBox="0 0 40 160" aria-hidden="true">
+        <rect x="12" y="8" width="16" height="144" rx="7" fill="#eef2f6" stroke="#8d99a6"/>
+        <rect x="18" y="48" width="4" height="80" fill="#2a2a2a"/>
+        <rect x="12" y="8" width="16" height="46" rx="7" fill="#1d6fd1"/>
+        <rect x="28" y="16" width="5" height="40" rx="2" fill="#1d6fd1"/>
+      </svg>
+      <svg class="deco-pen deco-right" viewBox="0 0 40 160" aria-hidden="true">
+        <rect x="12" y="8" width="16" height="144" rx="7" fill="#eef2f6" stroke="#8d99a6"/>
+        <rect x="18" y="48" width="4" height="80" fill="#2a2a2a"/>
+        <rect x="12" y="8" width="16" height="46" rx="7" fill="#1730b5"/>
+        <rect x="28" y="16" width="5" height="40" rx="2" fill="#1730b5"/>
+      </svg>
+      <div class="sheet">
+        <h1 class="marker">ben <span>fight</span></h1>
+        <p class="tagline">build it by : shan_dharan</p>
+        <div class="menu">
+          <button class="btn btn-green" id="play-ai" type="button">Play vs Computer</button>
+          <button class="btn" id="play-friend" type="button">Play with A Friend</button>
+          <button class="linkish" id="how" type="button">How to play?</button>
+        </div>
+        <div class="inks">
+          <span><span class="p1">P1</span> · Blue ink</span>
+          <span>|</span>
+          <span><span class="p2">P2</span> · Red ink</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen pick hidden" id="screen-pick">
+      <button class="btn back" id="pick-back" type="button">◂ Back</button>
+      <p class="you-line" id="pick-you">YOU · Blue ink</p>
+      <h2 class="marker">Select your <span id="pick-word">Biro</span></h2>
+      <div class="grid" id="biro-grid"></div>
+      <button class="btn lets" id="lets-play" type="button" disabled>Let's play ▶</button>
+    </section>
+
+    <section class="screen pass hidden" id="screen-pass">
+      <div class="pass-card">
+        <h2 class="marker">Pass the <span style="color:#c62828">phone</span></h2>
+        <p>Red ink picks next. Don't peek.</p>
+        <button class="btn btn-green" id="pass-ready" type="button" style="margin-top:20px;padding:12px 28px">P2 is ready</button>
+      </div>
+    </section>
+
+    <section class="screen game hidden" id="screen-game">
+      <div class="hud">
+        <div class="hud-side"><button class="btn" id="exit" type="button">◂ Exit</button></div>
+        <div class="scores">
+          <div class="score" id="score-1"><span id="label-1">YOU</span><strong id="pts-1">0</strong></div>
+          <div class="round-pill">Round <span id="round-num">1</span></div>
+          <div class="score" id="score-2"><span id="label-2">CPU</span><strong id="pts-2">0</strong></div>
+        </div>
+        <div class="hud-side right"></div>
+      </div>
+      <div class="turn-wrap"><p class="turn" id="turn-pill">Your flick</p></div>
+      <div class="stage" id="stage">
+        <p class="watermark marker"><span style="color:#1f4fbf">ben</span> <span style="color:#c62828">fight</span></p>
+        <canvas id="play"></canvas>
+      </div>
+      <div class="banner hidden" id="round-banner"></div>
+      <div class="match-over hidden" id="match-banner"></div>
+    </section>
+
+    <div class="soundbar" id="soundbar">
+      <button type="button" data-key="effects" aria-pressed="true"><span class="ico">🔊</span><span class="lbl">Sounds</span></button>
+    </div>
+  </div>
+
+  <div class="rotate-gate" id="rotate-gate">
+    <div class="phone" aria-hidden="true">📱</div>
+    <h2 class="marker">Turn your phone <span>sideways</span></h2>
+    <p>ben fight is played in landscape. Rotate your phone to start.</p>
+    <button class="btn btn-green" id="lock-land" type="button" style="padding:10px 24px">Play in landscape</button>
+    <p class="fine">Nothing happened? Turn off rotation lock in your phone's quick settings, then rotate it.</p>
+  </div>
+  <div id="modals"></div>
+  <script src="js/physics.js"></script>
+  <script src="js/desk.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+{
+  "summary": "Renamed the visible title from Biro Game to ben fight, with ben in blue and fight in red. The line under the title now reads build it by : shan_dharan. The browser tab, home-screen name, desk watermark, and landscape prompt use the same name.",
+  "current_status": "Title change is live at http://localhost:5173. Refresh the page to see ben fight and the credit line."
+}

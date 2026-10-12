@@ -1,0 +1,4 @@
+{
+  "summary": "Removed the Class noise control and stopped the looping classroom murmur. The Sounds button still toggles flick and pen-clack effects. Verified in the browser: the sound bar only shows Sounds, and the loaded sound script no longer contains the murmur.",
+  "current_status": "Class noise is gone on http://localhost:5173. Refresh to hear only game sounds."
+}

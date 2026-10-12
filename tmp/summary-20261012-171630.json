@@ -1,0 +1,4 @@
+{
+  "summary": "Rebuilt Biro as a local notebook-and-desk game matching the live site: menu, five biros, catapult flicks, first to two rounds, computer opponent, and pass-the-phone friend play. It is a fullscreen landscape web app with a home-screen install path and a Capacitor config for iOS and Android. Online accounts from the original site are not included because that lobby is their server.",
+  "current_status": "Playable at http://localhost:5173 via npm start. Home, biro select, match desk, how-to-play, friend pass, and leaderboard were checked in the browser. A simulated flick moved the pen on the desk."
+}

@@ -1,0 +1,4 @@
+{
+  "summary": "Told the user the game is already being served and how to open it in a browser. Added an npm run dev script that matches npm start, because npm run dev was missing.",
+  "current_status": "Biro Game is playable at http://localhost:5173. Python is already listening on port 5173. Start later with npm start or npm run dev from the project folder."
+}
